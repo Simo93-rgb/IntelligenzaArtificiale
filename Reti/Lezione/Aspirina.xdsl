@@ -1,0 +1,94 @@
+<smile version="1.0" id="Network1" numsamples="1000">
+	<nodes>
+		<cpt id="Influenza">
+			<state id="assente"/>
+			<state id="presente"/>
+			<probabilities>0.95 0.05</probabilities>
+		</cpt>
+		<cpt id="Febbre">
+			<state id="assente"/>
+			<state id="presente"/>
+			<parents>Influenza</parents>
+			<probabilities>0.98 0.02 0.05000000000000004 0.95</probabilities>
+		</cpt>
+		<cpt id="Termometro">
+			<state id="no_febbre"/>
+			<state id="si_febbre"/>
+			<parents>Febbre</parents>
+			<probabilities>0.95 0.05 0.09999999999999998 0.9</probabilities>
+		</cpt>
+		<decision id="Aspirina">
+			<state id="prendere"/>
+			<state id="non_prendere"/>
+		</decision>
+		<cpt id="FebbrePiu_Tardi">
+			<state id="assente"/>
+			<state id="presente"/>
+			<parents>Febbre Aspirina</parents>
+			<probabilities>0.99 0.01 0.98 0.02 0.95 0.05 0.09999999999999998 0.9</probabilities>
+		</cpt>
+		<cpt id="Reazione">
+			<state id="no"/>
+			<state id="si"/>
+			<parents>Aspirina</parents>
+			<probabilities>0.95 0.05 1 0</probabilities>
+		</cpt>
+		<utility id="Utilita">
+			<parents>FebbrePiu_Tardi Reazione</parents>
+			<utilities>1 0.3 0.1 0</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.2603.0" name="Network1" faultnameformat="nodestate">
+			<node id="Influenza">
+				<name>Influenza</name>
+				<interior color="e5f6f7"/>
+				<outline color="000080"/>
+				<font color="000000" name="Arial" size="8"/>
+				<position>242 76 301 112</position>
+			</node>
+			<node id="Febbre">
+				<name>Febbre</name>
+				<interior color="e5f6f7"/>
+				<outline color="000080"/>
+				<font color="000000" name="Arial" size="8"/>
+				<position>245 189 296 220</position>
+			</node>
+			<node id="Termometro">
+				<name>Termometro</name>
+				<interior color="e5f6f7"/>
+				<outline color="000080"/>
+				<font color="000000" name="Arial" size="8"/>
+				<position>241 290 310 333</position>
+			</node>
+			<node id="FebbrePiu_Tardi">
+				<name>FebbrePiu'Tardi</name>
+				<interior color="e5f6f7"/>
+				<outline color="000080"/>
+				<font color="000000" name="Arial" size="8"/>
+				<position>388 184 474 237</position>
+			</node>
+			<node id="Reazione">
+				<name>Reazione</name>
+				<interior color="e5f6f7"/>
+				<outline color="000080"/>
+				<font color="000000" name="Arial" size="8"/>
+				<position>571 189 630 225</position>
+			</node>
+			<node id="Aspirina">
+				<name>Aspirina</name>
+				<interior color="e5f6f7"/>
+				<outline color="000080"/>
+				<font color="000000" name="Arial" size="8"/>
+				<position>434 83 486 109</position>
+			</node>
+			<node id="Utilita">
+				<name>Utilita</name>
+				<interior color="e5f6f7"/>
+				<outline color="000080"/>
+				<font color="000000" name="Arial" size="8"/>
+				<position>571 293 616 325</position>
+			</node>
+		</genie>
+	</extensions>
+<script id="bw-fido2-page-script"/></smile>
