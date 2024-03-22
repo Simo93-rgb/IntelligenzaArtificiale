@@ -25,7 +25,6 @@
 		<decision id="prototipazione">
 			<state id="yes" />
 			<state id="no" />
-			<parents>ricerca_di_mercato</parents>
 		</decision>
 		<cpt id="qualita_prodotto">
 			<state id="std" />
@@ -47,7 +46,6 @@
 		<decision id="produzione">
 			<state id="yes" />
 			<state id="no" />
-			<parents>prototipazione</parents>
 		</decision>
 		<utility id="valore_profitto">
 			<parents>produzione profitto</parents>
@@ -157,7 +155,7 @@
 				<interior color="99ccff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>356 367 406 395</position>
+				<position>351 367 401 395</position>
 				<barchart active="true" width="128" height="64" />
 			</node>
 		</genie>
