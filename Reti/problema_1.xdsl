@@ -18,7 +18,7 @@
 		<cpt id="domanda_stimata_di_mercato">
 			<state id="low" />
 			<state id="high" />
-			<state id="not_found" />
+			<state id="nothing" />
 			<parents>ricerca_di_mercato domanda_reale_mercato</parents>
 			<probabilities>0.9 0.09999999999999998 0 0.09999999999999998 0.9 0 0 0 1 0 0 1</probabilities>
 		</cpt>
@@ -28,7 +28,7 @@
 			<parents>domanda_stimata_di_mercato ricerca_di_mercato</parents>
 		</decision>
 		<cpt id="qualita_prodotto">
-			<state id="std" />
+			<state id="standard" />
 			<state id="high" />
 			<parents>prototipazione</parents>
 			<probabilities>0.15 0.85 0.5 0.5</probabilities>
@@ -36,14 +36,14 @@
 		<decision id="produzione">
 			<state id="yes" />
 			<state id="no" />
-			<parents>qualita_prodotto</parents>
+			<parents>prototipazione</parents>
 		</decision>
 		<cpt id="profitto">
 			<state id="nothing" />
 			<state id="low" />
 			<state id="high" />
-			<parents>produzione qualita_prodotto domanda_reale_mercato</parents>
-			<probabilities>0.05 0.85 0.1 0.05 0.85 0.1 0.03 0.7 0.27 0.03 0.7 0.27 1 0 0 1 0 0 1 0 0 1 0 0</probabilities>
+			<parents>domanda_reale_mercato qualita_prodotto produzione</parents>
+			<probabilities>0.05 0.85 0.1 1 0 0 0.03 0.7899999999999999 0.18 1 0 0 0.02 0.4 0.58 1 0 0 0.01 0.25 0.74 1 0 0</probabilities>
 		</cpt>
 		<utility id="costo_prototipazione">
 			<parents>prototipazione</parents>
@@ -70,14 +70,14 @@
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
 				<position>511 109 595 161</position>
-				<barchart active="true" width="128" height="64" />
+				<barchart active="true" width="128" height="72" />
 			</node>
 			<node id="ricerca_di_mercato">
 				<name>Ricerca di mercato</name>
 				<interior color="ccffcc" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>671 108 775 163</position>
+				<position>673 104 777 159</position>
 				<barchart active="true" width="128" height="64" />
 			</node>
 			<node id="domanda_reale_mercato">
@@ -85,7 +85,7 @@
 				<interior color="ffff99" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>332 112 416 164</position>
+				<position>332 105 416 157</position>
 				<barchart active="true" width="128" height="64" />
 			</node>
 			<node id="costo_ricerca_di_mercato">
@@ -93,7 +93,7 @@
 				<interior color="99ccff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>868 121 918 149</position>
+				<position>868 117 918 145</position>
 				<barchart active="true" width="128" height="64" />
 			</node>
 			<node id="qualita_prodotto">
@@ -101,7 +101,7 @@
 				<interior color="ffff99" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>508 232 592 284</position>
+				<position>511 233 595 285</position>
 				<barchart active="true" width="128" height="64" />
 			</node>
 			<node id="prototipazione">
@@ -109,7 +109,7 @@
 				<interior color="ccffcc" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>673 231 777 286</position>
+				<position>674 231 778 286</position>
 				<barchart active="true" width="128" height="64" />
 			</node>
 			<node id="profitto">
@@ -117,8 +117,8 @@
 				<interior color="ffff99" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>333 232 417 284</position>
-				<barchart active="true" width="128" height="64" />
+				<position>332 377 416 429</position>
+				<barchart active="true" width="128" height="72" />
 			</node>
 			<node id="costo_prototipazione">
 				<name>Costo prototipazione</name>
@@ -133,7 +133,7 @@
 				<interior color="ccffcc" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>673 349 777 404</position>
+				<position>674 372 778 427</position>
 				<barchart active="true" width="128" height="64" />
 			</node>
 			<node id="costo_produzione">
@@ -141,7 +141,7 @@
 				<interior color="99ccff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>868 362 918 390</position>
+				<position>868 385 918 413</position>
 				<barchart active="true" width="128" height="64" />
 			</node>
 			<node id="utilita">
@@ -149,7 +149,7 @@
 				<interior color="99ccff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>1033 490 1083 518</position>
+				<position>1075 313 1125 341</position>
 				<barchart active="true" width="128" height="64" />
 			</node>
 			<node id="valore_profitto">
@@ -157,7 +157,7 @@
 				<interior color="99ccff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>351 367 401 395</position>
+				<position>868 529 918 557</position>
 				<barchart active="true" width="128" height="64" />
 			</node>
 		</genie>
