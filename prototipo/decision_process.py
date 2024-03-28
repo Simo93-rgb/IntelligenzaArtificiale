@@ -1,42 +1,45 @@
-import pysmile
-import pysmile_license
-from enum import Enum
-
-
-class Outcome(Enum):
-    YES = "yes"
-    NO = "no"
-    LOW = "low"
-    HIGH = "high"
-    NOTHING = "nothing"
-    STANDARD = "standard"
-
-
-class Nodo(Enum):
-    PROFITTO = "profitto"
-    RICERCA = "ricerca_di_mercato"
-    DOMANDA = "domanda_stimata_di_mercato"
-    PROTOTIPAZIONE = "prototipazione"
-    QUALITY = "qualita_prodotto"
-    PRODUZIONE = "produzione"
+from classi import Outcome, Nodo
 
 
 def print_node_utility(net, node_id: Nodo):
+    """
+        Stampa l'utilità attesa per un dato nodo nella rete bayesiana.
+
+        Parametri:
+            net (Network): L'oggetto della rete bayesiana.
+
+            node_id (Nodo): L'identificativo del nodo di cui si vogliono visualizzare le utilità.
+
+        Restituisce:
+            None
+        """
     colours = ["\033[92m", "\033[93m", "\033[94m", "\033[95m"]
     reset_colour = "\033[0m"
 
     node = net.get_node_value(node_id.value)
-    print(f"Utilità attese di {node_id.value.replace('_', ' ').title()}:")
+    print(f"\nUtilità attese di {node_id.value.replace('_', ' ').title()}:")
 
     for i, value in enumerate(node):
-        color = colours[i % len(colours)]  # Cicla attraverso i colori se ci sono più valori degli indici
+        color = colours[i % len(colours)]
         outcome_id = net.get_outcome_id(node_id.value, i)
         formatted_value = round(value, 3)
         print(f"{color}{outcome_id}={formatted_value}{reset_colour}")
-    print("\n")
 
 
 def change_evidence_and_update(net, node_id: Nodo, outcome: Outcome = None):
+    """
+        Modifica l'evidenza di un nodo nella rete e aggiorna le credenze della rete.
+
+        Parametri:
+            net (Network): L'oggetto della rete bayesiana.
+
+            node_id (Nodo): Il nodo su cui modificare l'evidenza.
+
+            outcome (Outcome, opzionale): Il risultato da impostare come evidenza. Se None, l'evidenza viene rimossa.
+
+        Restituisce:
+            None
+        """
     if outcome:
         net.set_evidence(node_id.value, outcome.value)
     else:
@@ -45,6 +48,21 @@ def change_evidence_and_update(net, node_id: Nodo, outcome: Outcome = None):
 
 
 def user_choice(prompt: str, options: dict, net, node_id: Nodo) -> str:
+    """
+        Visualizza una domanda all'utente, stampa l'utilità del nodo specificato, e cattura la scelta dell'utente.
+
+        Parametri:
+            prompt (str): Il messaggio da visualizzare all'utente.
+
+            options (dict): Un dizionario delle opzioni disponibili per l'utente.
+
+            net (Network): L'oggetto della rete bayesiana.
+
+            node_id (Nodo): Il nodo di cui visualizzare l'utilità.
+
+        Restituisce:
+            str: La scelta dell'utente o "Invalid choice" se la scelta non è valida.
+        """
     print_node_utility(net, node_id)
     print(prompt)
     for key, value in options.items():
@@ -54,6 +72,21 @@ def user_choice(prompt: str, options: dict, net, node_id: Nodo) -> str:
 
 
 def set_user_defined_evidence(net, node_id: Nodo, outcome_dict: dict, prompt: str):
+    """
+        Chiede all'utente di definire l'evidenza per un nodo specifico e la imposta nella rete.
+
+        Parametri:
+            net (Network): L'oggetto della rete bayesiana.
+
+            node_id (Nodo): Il nodo per il quale impostare l'evidenza.
+
+            outcome_dict (dict): Un dizionario che mappa le scelte dell'utente ai risultati possibili.
+
+            prompt (str): Il messaggio da visualizzare per chiedere all'utente di scegliere.
+
+        Restituisce:
+            None
+        """
     choice = user_choice(prompt, outcome_dict, net, node_id)
     if choice != "Invalid choice":
         change_evidence_and_update(net, node_id, Outcome[choice])
@@ -62,6 +95,15 @@ def set_user_defined_evidence(net, node_id: Nodo, outcome_dict: dict, prompt: st
 
 
 def decision_process(net):
+    """
+        Gestisce il processo decisionale dell'utente per modificare le evidenze nella rete e visualizzare le utilità.
+
+        Parametri:
+            net (Network): L'oggetto della rete bayesiana.
+
+        Restituisce:
+            None
+        """
     options = {"1": "YES", "2": "NO"}
     market_research = user_choice("Vuoi effettuare la ricerca di mercato?", options, net, Nodo.RICERCA)
     if market_research == "YES":
@@ -87,18 +129,3 @@ def decision_process(net):
         change_evidence_and_update(net, Nodo.PRODUZIONE, Outcome.YES)
     elif production_decision == "NO":
         change_evidence_and_update(net, Nodo.PRODUZIONE, Outcome.NO)
-
-
-def main():
-    net = pysmile.Network()
-    net.read_file("Reti/problema_1.xdsl")
-    net.update_beliefs()
-
-    decision_process(net)
-
-    print("Utilità attesa finale")
-    print_node_utility(net, Nodo.PROFITTO)
-
-
-# Uncomment before running
-main()

@@ -1,6 +1,4 @@
-import pysmile
-import pysmile_license
-import colorama
+import pysmile_licence
 from colorama import Fore, Style
 
 #funzione per stampare le prbabilità del sensore delle varie posizioni rilevate
@@ -16,7 +14,7 @@ def print_azione(net, az):
         print(net.get_outcome_id(az, i) + "=" + str(eu[i]))
     return eu.index(max(eu))
 
-net = pysmile.Network()
+net = pysmile_licence.Network()
 net.read_file("prob2_unroll.xdsl")
 net.update_beliefs()
 

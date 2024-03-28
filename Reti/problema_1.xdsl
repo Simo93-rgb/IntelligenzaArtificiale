@@ -109,7 +109,7 @@
 				<interior color="ccffcc" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>674 231 778 286</position>
+				<position>674 230 778 285</position>
 				<barchart active="true" width="128" height="64" />
 			</node>
 			<node id="profitto">
