@@ -1,4 +1,4 @@
-from classi import Outcome, Nodo
+from classi import Outcome, Nodo, TipoNodo
 
 
 def print_node_utility(net, node_id: Nodo):
@@ -17,7 +17,11 @@ def print_node_utility(net, node_id: Nodo):
     reset_colour = "\033[0m"
 
     node = net.get_node_value(node_id.value)
-    print(f"\nUtilità attese di {node_id.value.replace('_', ' ').title()}:")
+    node_type: TipoNodo = net.get_node_type(node_id.value)
+    if node_type == TipoNodo.DECISION.value:
+        print(f"\nUtilità attese di {node_id.value.replace('_', ' ').title()}:")
+    elif node_type == TipoNodo.CHANCE.value:
+        print(f"\nLe probabilià di {node_id.value.replace('_', ' ').title()} sono:")
 
     for i, value in enumerate(node):
         color = colours[i % len(colours)]
@@ -118,8 +122,12 @@ def decision_process(net):
     prototype_decision = user_choice("Vuoi prototipare?", options, net, Nodo.PROTOTIPAZIONE)
     if prototype_decision == "YES":
         change_evidence_and_update(net, Nodo.PROTOTIPAZIONE, Outcome.YES)
-        # product_quality_options = {"1": "STANDARD", "2": "HIGH"}
-        # set_user_defined_evidence(net, Nodo.QUALITY, product_quality_options, "Come cambia la qualità?")
+        is_there_prototype = user_choice("Il prototipo c'è?", options, net, Nodo.QUALITY)
+        if is_there_prototype == "YES":
+            product_quality_options = {"1": "STANDARD", "2": "HIGH"}
+            set_user_defined_evidence(net, Nodo.QUALITY, product_quality_options, "Come cambia la qualità?")
+        else:
+            print("La qualità sarà robabilistica con: \n * HIGH -> 85%\n * STANDARD -> 15%")
     elif prototype_decision == "NO":
         change_evidence_and_update(net, Nodo.PROTOTIPAZIONE, Outcome.NO)
         change_evidence_and_update(net, Nodo.QUALITY, Outcome.STANDARD)
