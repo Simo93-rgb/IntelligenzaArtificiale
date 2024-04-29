@@ -1,6 +1,6 @@
 from enum import Enum
 
-0
+
 class Outcome(Enum):
     YES = "yes"
     NO = "no"
@@ -10,6 +10,7 @@ class Outcome(Enum):
     STANDARD = "standard"
 
 
+
 class Nodo(Enum):
     PROFITTO = "profitto"
     RICERCA = "ricerca_di_mercato"
@@ -17,6 +18,7 @@ class Nodo(Enum):
     PROTOTIPAZIONE = "prototipazione"
     QUALITY = "qualita_prodotto"
     PRODUZIONE = "produzione"
+
 
 class TipoNodo(Enum):
     DECISION = 17

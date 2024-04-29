@@ -49,6 +49,7 @@ def change_evidence_and_update(net, node_id: Nodo, outcome: Outcome = None):
     else:
         net.clear_evidence(node_id.value)
     net.update_beliefs()
+    return outcome
 
 
 def user_choice(prompt: str, options: dict, net, node_id: Nodo) -> str:

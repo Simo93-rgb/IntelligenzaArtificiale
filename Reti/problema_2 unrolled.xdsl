@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network2" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Meteo">
+			<state id="normale" />
+			<state id="umido" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Terreno">
+			<state id="normale" />
+			<state id="sconnesso" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<noisymax id="Guasto">
+			<state id="si" />
+			<state id="no" />
+			<parents>Meteo Terreno</parents>
+			<strengths>1 0 1 0</strengths>
+			<parameters>0.1 0.9 0 1 0.5 0.5 0 1 0.1 0.9</parameters>
+		</noisymax>
+		<noisymax id="Accuratezza_Sensore">
+			<state id="pessima" />
+			<state id="buona" />
+			<state id="ottima" />
+			<parents>Terreno Meteo Guasto</parents>
+			<strengths>1 0 1 0 0 1</strengths>
+			<parameters>0.6 0.3 0.1 0 0 1 0.3 0.15 0.5499999999999999 0 0 1 1 0 0 0 0 1 0.0003 0.0007 0.999</parameters>
+		</noisymax>
+		<cpt id="Posizione">
+			<state id="sinistra" />
+			<state id="centro" />
+			<state id="destra" />
+			<probabilities>0 1 0</probabilities>
+		</cpt>
+		<cpt id="Sensore_Posizione">
+			<state id="left" />
+			<state id="midle" />
+			<state id="right" />
+			<parents>Accuratezza_Sensore Posizione</parents>
+			<probabilities>0.35 0.325 0.325 0.325 0.35 0.325 0.325 0.3250000000000001 0.35 0.9 0.05 0.04999999999999997 0.05 0.9 0.04999999999999993 0.04999999999999993 0.05 0.9 0.99 0.005 0.005000000000000009 0.005000000000000009 0.99 0.005 0.005 0.005000000000000004 0.99</probabilities>
+		</cpt>
+		<decision id="Comando">
+			<state id="sinistra" />
+			<state id="mantieni" />
+			<state id="destra" />
+			<parents>Sensore_Posizione</parents>
+		</decision>
+		<utility id="Utilità">
+			<parents>Posizione</parents>
+			<utilities>0 1 0</utilities>
+		</utility>
+		<cpt id="Meteo_1">
+			<state id="normale" />
+			<state id="umido" />
+			<parents>Meteo</parents>
+			<probabilities>0.6666666666666666 0.3333333333333334 0.3333333333333334 0.6666666666666666</probabilities>
+		</cpt>
+		<cpt id="Terreno_1">
+			<state id="normale" />
+			<state id="sconnesso" />
+			<parents>Terreno</parents>
+			<probabilities>0.6 0.4 0.35 0.65</probabilities>
+		</cpt>
+		<noisymax id="Guasto_1">
+			<state id="si" />
+			<state id="no" />
+			<parents>Meteo_1 Terreno_1 Guasto</parents>
+			<strengths>1 0 1 0 0 1</strengths>
+			<parameters>0.1 0.9 0 1 0.5 0.5 0 1 1 0 0 1 0.1 0.9</parameters>
+		</noisymax>
+		<noisymax id="Accuratezza_Sensore_1">
+			<state id="pessima" />
+			<state id="buona" />
+			<state id="ottima" />
+			<parents>Terreno_1 Meteo_1 Guasto_1</parents>
+			<strengths>1 0 1 0 0 1</strengths>
+			<parameters>0.6 0.3 0.1 0 0 1 0.3 0.15 0.5499999999999999 0 0 1 1 0 0 0 0 1 0.0003 0.0007 0.999</parameters>
+		</noisymax>
+		<cpt id="Posizione_1">
+			<state id="sinistra" />
+			<state id="centro" />
+			<state id="destra" />
+			<parents>Comando Posizione</parents>
+			<probabilities>0.95 0.05 0 0.9 0.05 0.05 0 0.05 0.95 0.95 0.05 0 0.05 0.9 0.05 0.95 0.05 0 0.05 0.95 0 0.05 0.05 0.9 0.95 0.05 0</probabilities>
+		</cpt>
+		<cpt id="Sensore_Posizione_1">
+			<state id="left" />
+			<state id="midle" />
+			<state id="right" />
+			<parents>Accuratezza_Sensore_1 Posizione_1</parents>
+			<probabilities>0.35 0.325 0.325 0.325 0.35 0.325 0.325 0.3250000000000001 0.35 0.9 0.05 0.04999999999999997 0.05 0.9 0.04999999999999993 0.04999999999999993 0.05 0.9 0.99 0.005 0.005000000000000009 0.005000000000000009 0.99 0.005 0.005 0.005000000000000004 0.99</probabilities>
+		</cpt>
+		<decision id="Comando_1">
+			<state id="sinistra" />
+			<state id="mantieni" />
+			<state id="destra" />
+			<parents>Sensore_Posizione_1</parents>
+		</decision>
+		<utility id="Utilità_1">
+			<parents>Posizione_1</parents>
+			<utilities>0 1 0</utilities>
+		</utility>
+		<cpt id="Meteo_2">
+			<state id="normale" />
+			<state id="umido" />
+			<parents>Meteo_1</parents>
+			<probabilities>0.6666666666666666 0.3333333333333334 0.3333333333333334 0.6666666666666666</probabilities>
+		</cpt>
+		<cpt id="Terreno_2">
+			<state id="normale" />
+			<state id="sconnesso" />
+			<parents>Terreno_1</parents>
+			<probabilities>0.6 0.4 0.35 0.65</probabilities>
+		</cpt>
+		<noisymax id="Guasto_2">
+			<state id="si" />
+			<state id="no" />
+			<parents>Meteo_2 Terreno_2 Guasto_1</parents>
+			<strengths>1 0 1 0 0 1</strengths>
+			<parameters>0.1 0.9 0 1 0.5 0.5 0 1 1 0 0 1 0.1 0.9</parameters>
+		</noisymax>
+		<noisymax id="Accuratezza_Sensore_2">
+			<state id="pessima" />
+			<state id="buona" />
+			<state id="ottima" />
+			<parents>Terreno_2 Meteo_2 Guasto_2</parents>
+			<strengths>1 0 1 0 0 1</strengths>
+			<parameters>0.6 0.3 0.1 0 0 1 0.3 0.15 0.5499999999999999 0 0 1 1 0 0 0 0 1 0.0003 0.0007 0.999</parameters>
+		</noisymax>
+		<cpt id="Posizione_2">
+			<state id="sinistra" />
+			<state id="centro" />
+			<state id="destra" />
+			<parents>Comando_1 Posizione_1</parents>
+			<probabilities>0.95 0.05 0 0.9 0.05 0.05 0 0.05 0.95 0.95 0.05 0 0.05 0.9 0.05 0.95 0.05 0 0.05 0.95 0 0.05 0.05 0.9 0.95 0.05 0</probabilities>
+		</cpt>
+		<cpt id="Sensore_Posizione_2">
+			<state id="left" />
+			<state id="midle" />
+			<state id="right" />
+			<parents>Accuratezza_Sensore_2 Posizione_2</parents>
+			<probabilities>0.35 0.325 0.325 0.325 0.35 0.325 0.325 0.3250000000000001 0.35 0.9 0.05 0.04999999999999997 0.05 0.9 0.04999999999999993 0.04999999999999993 0.05 0.9 0.99 0.005 0.005000000000000009 0.005000000000000009 0.99 0.005 0.005 0.005000000000000004 0.99</probabilities>
+		</cpt>
+		<decision id="Comando_2">
+			<state id="sinistra" />
+			<state id="mantieni" />
+			<state id="destra" />
+			<parents>Sensore_Posizione_2</parents>
+		</decision>
+		<utility id="Utilità_2">
+			<parents>Posizione_2</parents>
+			<utilities>0 1 0</utilities>
+		</utility>
+		<cpt id="Meteo_3">
+			<state id="normale" />
+			<state id="umido" />
+			<parents>Meteo_2</parents>
+			<probabilities>0.6666666666666666 0.3333333333333334 0.3333333333333334 0.6666666666666666</probabilities>
+		</cpt>
+		<cpt id="Terreno_3">
+			<state id="normale" />
+			<state id="sconnesso" />
+			<parents>Terreno_2</parents>
+			<probabilities>0.6 0.4 0.35 0.65</probabilities>
+		</cpt>
+		<noisymax id="Guasto_3">
+			<state id="si" />
+			<state id="no" />
+			<parents>Meteo_3 Terreno_3 Guasto_2</parents>
+			<strengths>1 0 1 0 0 1</strengths>
+			<parameters>0.1 0.9 0 1 0.5 0.5 0 1 1 0 0 1 0.1 0.9</parameters>
+		</noisymax>
+		<noisymax id="Accuratezza_Sensore_3">
+			<state id="pessima" />
+			<state id="buona" />
+			<state id="ottima" />
+			<parents>Terreno_3 Meteo_3 Guasto_3</parents>
+			<strengths>1 0 1 0 0 1</strengths>
+			<parameters>0.6 0.3 0.1 0 0 1 0.3 0.15 0.5499999999999999 0 0 1 1 0 0 0 0 1 0.0003 0.0007 0.999</parameters>
+		</noisymax>
+		<cpt id="Posizione_3">
+			<state id="sinistra" />
+			<state id="centro" />
+			<state id="destra" />
+			<parents>Comando_2 Posizione_2</parents>
+			<probabilities>0.95 0.05 0 0.9 0.05 0.05 0 0.05 0.95 0.95 0.05 0 0.05 0.9 0.05 0.95 0.05 0 0.05 0.95 0 0.05 0.05 0.9 0.95 0.05 0</probabilities>
+		</cpt>
+		<cpt id="Sensore_Posizione_3">
+			<state id="left" />
+			<state id="midle" />
+			<state id="right" />
+			<parents>Accuratezza_Sensore_3 Posizione_3</parents>
+			<probabilities>0.35 0.325 0.325 0.325 0.35 0.325 0.325 0.3250000000000001 0.35 0.9 0.05 0.04999999999999997 0.05 0.9 0.04999999999999993 0.04999999999999993 0.05 0.9 0.99 0.005 0.005000000000000009 0.005000000000000009 0.99 0.005 0.005 0.005000000000000004 0.99</probabilities>
+		</cpt>
+		<decision id="Comando_3">
+			<state id="sinistra" />
+			<state id="mantieni" />
+			<state id="destra" />
+			<parents>Sensore_Posizione_3</parents>
+		</decision>
+		<utility id="Utilità_3">
+			<parents>Posizione_3</parents>
+			<utilities>0 1 0</utilities>
+		</utility>
+		<cpt id="Meteo_4">
+			<state id="normale" />
+			<state id="umido" />
+			<parents>Meteo_3</parents>
+			<probabilities>0.6666666666666666 0.3333333333333334 0.3333333333333334 0.6666666666666666</probabilities>
+		</cpt>
+		<cpt id="Terreno_4">
+			<state id="normale" />
+			<state id="sconnesso" />
+			<parents>Terreno_3</parents>
+			<probabilities>0.6 0.4 0.35 0.65</probabilities>
+		</cpt>
+		<noisymax id="Guasto_4">
+			<state id="si" />
+			<state id="no" />
+			<parents>Meteo_4 Terreno_4 Guasto_3</parents>
+			<strengths>1 0 1 0 0 1</strengths>
+			<parameters>0.1 0.9 0 1 0.5 0.5 0 1 1 0 0 1 0.1 0.9</parameters>
+		</noisymax>
+		<noisymax id="Accuratezza_Sensore_4">
+			<state id="pessima" />
+			<state id="buona" />
+			<state id="ottima" />
+			<parents>Terreno_4 Meteo_4 Guasto_4</parents>
+			<strengths>1 0 1 0 0 1</strengths>
+			<parameters>0.6 0.3 0.1 0 0 1 0.3 0.15 0.5499999999999999 0 0 1 1 0 0 0 0 1 0.0003 0.0007 0.999</parameters>
+		</noisymax>
+		<cpt id="Posizione_4">
+			<state id="sinistra" />
+			<state id="centro" />
+			<state id="destra" />
+			<parents>Comando_3 Posizione_3</parents>
+			<probabilities>0.95 0.05 0 0.9 0.05 0.05 0 0.05 0.95 0.95 0.05 0 0.05 0.9 0.05 0.95 0.05 0 0.05 0.95 0 0.05 0.05 0.9 0.95 0.05 0</probabilities>
+		</cpt>
+		<cpt id="Sensore_Posizione_4">
+			<state id="left" />
+			<state id="midle" />
+			<state id="right" />
+			<parents>Accuratezza_Sensore_4 Posizione_4</parents>
+			<probabilities>0.35 0.325 0.325 0.325 0.35 0.325 0.325 0.3250000000000001 0.35 0.9 0.05 0.04999999999999997 0.05 0.9 0.04999999999999993 0.04999999999999993 0.05 0.9 0.99 0.005 0.005000000000000009 0.005000000000000009 0.99 0.005 0.005 0.005000000000000004 0.99</probabilities>
+		</cpt>
+		<decision id="Comando_4">
+			<state id="sinistra" />
+			<state id="mantieni" />
+			<state id="destra" />
+			<parents>Sensore_Posizione_4</parents>
+		</decision>
+		<utility id="Utilità_4">
+			<parents>Posizione_4</parents>
+			<utilities>0 1 0</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3402.0 ACADEMIC" name="Network2 unrolled">
+			<node id="Meteo">
+				<name>Meteo</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>254 86 356 159</position>
+			</node>
+			<node id="Terreno">
+				<name>Terreno</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>441 228 525 285</position>
+			</node>
+			<node id="Guasto">
+				<name>Guasto</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>440 95 527 149</position>
+			</node>
+			<node id="Accuratezza_Sensore">
+				<name>Accuratezza Sensore</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>252 220 358 293</position>
+			</node>
+			<node id="Posizione">
+				<name>Posizione</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>246 480 365 555</position>
+			</node>
+			<node id="Sensore_Posizione">
+				<name>Sensore Posizione</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>250 352 361 426</position>
+			</node>
+			<node id="Comando">
+				<name>Comando</name>
+				<interior color="ccffcc" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>431 362 543 415</position>
+			</node>
+			<node id="Utilità">
+				<name>Utilità</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>379 591 479 655</position>
+			</node>
+			<textbox>
+				<caption>Step0</caption>
+				<font color="6a6a6a" name="Arial" size="7" />
+				<position>406 680 430 690</position>
+			</textbox>
+			<textbox>
+				<caption>Step1</caption>
+				<font color="6a6a6a" name="Arial" size="7" />
+				<position>1198 680 1222 690</position>
+			</textbox>
+			<textbox>
+				<caption>Step2</caption>
+				<font color="6a6a6a" name="Arial" size="7" />
+				<position>1990 680 2014 690</position>
+			</textbox>
+			<textbox>
+				<caption>Step3</caption>
+				<font color="6a6a6a" name="Arial" size="7" />
+				<position>2782 680 2806 690</position>
+			</textbox>
+			<textbox>
+				<caption>Step4</caption>
+				<font color="6a6a6a" name="Arial" size="7" />
+				<position>3574 680 3598 690</position>
+			</textbox>
+			<node id="Meteo_1">
+				<name>Meteo (t=1)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1046 106 1148 179</position>
+			</node>
+			<node id="Terreno_1">
+				<name>Terreno (t=1)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1233 248 1317 305</position>
+			</node>
+			<node id="Guasto_1">
+				<name>Guasto (t=1)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1232 115 1319 169</position>
+			</node>
+			<node id="Accuratezza_Sensore_1">
+				<name>Accuratezza Sensore (t=1)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1044 240 1150 313</position>
+			</node>
+			<node id="Posizione_1">
+				<name>Posizione (t=1)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1038 500 1157 575</position>
+			</node>
+			<node id="Sensore_Posizione_1">
+				<name>Sensore Posizione (t=1)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1042 372 1153 446</position>
+			</node>
+			<node id="Comando_1">
+				<name>Comando (t=1)</name>
+				<interior color="ccffcc" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1223 382 1335 435</position>
+			</node>
+			<node id="Utilità_1">
+				<name>Utilità (t=1)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1171 611 1271 675</position>
+			</node>
+			<node id="Meteo_2">
+				<name>Meteo (t=2)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1838 86 1940 159</position>
+			</node>
+			<node id="Terreno_2">
+				<name>Terreno (t=2)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2025 228 2109 285</position>
+			</node>
+			<node id="Guasto_2">
+				<name>Guasto (t=2)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2024 95 2111 149</position>
+			</node>
+			<node id="Accuratezza_Sensore_2">
+				<name>Accuratezza Sensore (t=2)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1836 220 1942 293</position>
+			</node>
+			<node id="Posizione_2">
+				<name>Posizione (t=2)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1830 480 1949 555</position>
+			</node>
+			<node id="Sensore_Posizione_2">
+				<name>Sensore Posizione (t=2)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1834 352 1945 426</position>
+			</node>
+			<node id="Comando_2">
+				<name>Comando (t=2)</name>
+				<interior color="ccffcc" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2015 362 2127 415</position>
+			</node>
+			<node id="Utilità_2">
+				<name>Utilità (t=2)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1963 591 2063 655</position>
+			</node>
+			<node id="Meteo_3">
+				<name>Meteo (t=3)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2630 106 2732 179</position>
+			</node>
+			<node id="Terreno_3">
+				<name>Terreno (t=3)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2817 248 2901 305</position>
+			</node>
+			<node id="Guasto_3">
+				<name>Guasto (t=3)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2816 115 2903 169</position>
+			</node>
+			<node id="Accuratezza_Sensore_3">
+				<name>Accuratezza Sensore (t=3)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2628 240 2734 313</position>
+			</node>
+			<node id="Posizione_3">
+				<name>Posizione (t=3)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2622 500 2741 575</position>
+			</node>
+			<node id="Sensore_Posizione_3">
+				<name>Sensore Posizione (t=3)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2626 372 2737 446</position>
+			</node>
+			<node id="Comando_3">
+				<name>Comando (t=3)</name>
+				<interior color="ccffcc" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2807 382 2919 435</position>
+			</node>
+			<node id="Utilità_3">
+				<name>Utilità (t=3)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2755 611 2855 675</position>
+			</node>
+			<node id="Meteo_4">
+				<name>Meteo (t=4)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3422 86 3524 159</position>
+			</node>
+			<node id="Terreno_4">
+				<name>Terreno (t=4)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3609 228 3693 285</position>
+			</node>
+			<node id="Guasto_4">
+				<name>Guasto (t=4)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3608 95 3695 149</position>
+			</node>
+			<node id="Accuratezza_Sensore_4">
+				<name>Accuratezza Sensore (t=4)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3420 220 3526 293</position>
+			</node>
+			<node id="Posizione_4">
+				<name>Posizione (t=4)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3414 480 3533 555</position>
+			</node>
+			<node id="Sensore_Posizione_4">
+				<name>Sensore Posizione (t=4)</name>
+				<interior color="ffff99" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3418 352 3529 426</position>
+			</node>
+			<node id="Comando_4">
+				<name>Comando (t=4)</name>
+				<interior color="ccffcc" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3599 362 3711 415</position>
+			</node>
+			<node id="Utilità_4">
+				<name>Utilità (t=4)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3547 591 3647 655</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

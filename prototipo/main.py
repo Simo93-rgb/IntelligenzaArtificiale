@@ -9,8 +9,6 @@ if __name__ == "__main__":
     net.update_beliefs()
 
     decision_process(net)
-    # print("type su un nodo chance: {}".format(net.get_node_type("domanda_stimata_di_mercato")))
-    # print("type su un nodo decision: {}".format(net.get_node_type("prototipazione")))
-    # print("type su un nodo decision: {}".format(net.get_node_type("produzione")))
+
     print("Utilità attesa finale")
     print_node_utility(net, Nodo.PROFITTO)
