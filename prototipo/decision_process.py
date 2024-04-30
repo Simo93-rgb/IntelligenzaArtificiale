@@ -30,7 +30,7 @@ def print_node_utility(net, node_id: Nodo):
         print(f"{color}{outcome_id}={formatted_value}{reset_colour}")
 
 
-def change_evidence_and_update(net, node_id: Nodo, outcome: Outcome = None):
+def change_evidence_and_update(net, node_id: Nodo, outcome: Outcome = None) -> Outcome:
     """
         Modifica l'evidenza di un nodo nella rete e aggiorna le credenze della rete.
 

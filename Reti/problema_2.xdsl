@@ -33,10 +33,10 @@
 			<state id="destra" />
 			<probabilities>0 1 0</probabilities>
 		</cpt>
-		<cpt id="SensorePosizione" dynamic="plate">
-			<state id="left" />
-			<state id="midle" />
-			<state id="right" />
+		<cpt id="Sensore_Posizione" dynamic="plate">
+			<state id="sinistra" />
+			<state id="centro" />
+			<state id="destra" />
 			<parents>Accuratezza_Sensore Posizione</parents>
 			<probabilities>0.35 0.325 0.325 0.325 0.35 0.325 0.325 0.3250000000000001 0.35 0.9 0.05 0.04999999999999997 0.05 0.9 0.04999999999999993 0.04999999999999993 0.05 0.9 0.99 0.005 0.005000000000000009 0.005000000000000009 0.99 0.005 0.005 0.005000000000000004 0.99</probabilities>
 		</cpt>
@@ -44,7 +44,7 @@
 			<state id="sinistra" />
 			<state id="mantieni" />
 			<state id="destra" />
-			<parents>SensorePosizione</parents>
+			<parents>Sensore_Posizione</parents>
 		</decision>
 		<utility id="Utilità" dynamic="plate">
 			<parents>Posizione</parents>
@@ -101,8 +101,8 @@
 				<font color="000000" name="Arial" size="8" />
 				<position>440 95 527 149</position>
 			</node>
-			<node id="SensorePosizione">
-				<name>SensorePosizione</name>
+			<node id="Sensore_Posizione">
+				<name>Sensore Posizione</name>
 				<interior color="ffff99" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />

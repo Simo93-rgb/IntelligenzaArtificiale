@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import Enum, auto
 
 
 class Outcome(Enum):
@@ -11,7 +11,7 @@ class Outcome(Enum):
     OTTIMA = "ottima"
     NORMALE = "normale"
     UMIDO = "umido"
-    SCONNESSO = "sconesso"
+    SCONNESSO = "sconnesso"
     YES = "yes"
     NO = "no"
 
@@ -24,9 +24,6 @@ class Nodo(Enum):
     SENSORE_POSIZIONE = "Sensore_Posizione"
     POSIZIONE = "Posizione"
     COMANDO = "Comando"
-
-    def __add__(self, other):
-        return Nodo(self.value + other.value)
 
 
 class TipoNodo(Enum):

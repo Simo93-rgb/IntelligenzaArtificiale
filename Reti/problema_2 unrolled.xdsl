@@ -34,9 +34,9 @@
 			<probabilities>0 1 0</probabilities>
 		</cpt>
 		<cpt id="Sensore_Posizione">
-			<state id="left" />
-			<state id="midle" />
-			<state id="right" />
+			<state id="sinistra" />
+			<state id="centro" />
+			<state id="destra" />
 			<parents>Accuratezza_Sensore Posizione</parents>
 			<probabilities>0.35 0.325 0.325 0.325 0.35 0.325 0.325 0.3250000000000001 0.35 0.9 0.05 0.04999999999999997 0.05 0.9 0.04999999999999993 0.04999999999999993 0.05 0.9 0.99 0.005 0.005000000000000009 0.005000000000000009 0.99 0.005 0.005 0.005000000000000004 0.99</probabilities>
 		</cpt>
@@ -54,7 +54,7 @@
 			<state id="normale" />
 			<state id="umido" />
 			<parents>Meteo</parents>
-			<probabilities>0.6666666666666666 0.3333333333333334 0.3333333333333334 0.6666666666666666</probabilities>
+			<probabilities>0.3 0.7 0.65 0.35</probabilities>
 		</cpt>
 		<cpt id="Terreno_1">
 			<state id="normale" />
@@ -85,9 +85,9 @@
 			<probabilities>0.95 0.05 0 0.9 0.05 0.05 0 0.05 0.95 0.95 0.05 0 0.05 0.9 0.05 0.95 0.05 0 0.05 0.95 0 0.05 0.05 0.9 0.95 0.05 0</probabilities>
 		</cpt>
 		<cpt id="Sensore_Posizione_1">
-			<state id="left" />
-			<state id="midle" />
-			<state id="right" />
+			<state id="sinistra" />
+			<state id="centro" />
+			<state id="destra" />
 			<parents>Accuratezza_Sensore_1 Posizione_1</parents>
 			<probabilities>0.35 0.325 0.325 0.325 0.35 0.325 0.325 0.3250000000000001 0.35 0.9 0.05 0.04999999999999997 0.05 0.9 0.04999999999999993 0.04999999999999993 0.05 0.9 0.99 0.005 0.005000000000000009 0.005000000000000009 0.99 0.005 0.005 0.005000000000000004 0.99</probabilities>
 		</cpt>
@@ -105,7 +105,7 @@
 			<state id="normale" />
 			<state id="umido" />
 			<parents>Meteo_1</parents>
-			<probabilities>0.6666666666666666 0.3333333333333334 0.3333333333333334 0.6666666666666666</probabilities>
+			<probabilities>0.3 0.7 0.65 0.35</probabilities>
 		</cpt>
 		<cpt id="Terreno_2">
 			<state id="normale" />
@@ -136,9 +136,9 @@
 			<probabilities>0.95 0.05 0 0.9 0.05 0.05 0 0.05 0.95 0.95 0.05 0 0.05 0.9 0.05 0.95 0.05 0 0.05 0.95 0 0.05 0.05 0.9 0.95 0.05 0</probabilities>
 		</cpt>
 		<cpt id="Sensore_Posizione_2">
-			<state id="left" />
-			<state id="midle" />
-			<state id="right" />
+			<state id="sinistra" />
+			<state id="centro" />
+			<state id="destra" />
 			<parents>Accuratezza_Sensore_2 Posizione_2</parents>
 			<probabilities>0.35 0.325 0.325 0.325 0.35 0.325 0.325 0.3250000000000001 0.35 0.9 0.05 0.04999999999999997 0.05 0.9 0.04999999999999993 0.04999999999999993 0.05 0.9 0.99 0.005 0.005000000000000009 0.005000000000000009 0.99 0.005 0.005 0.005000000000000004 0.99</probabilities>
 		</cpt>
@@ -156,7 +156,7 @@
 			<state id="normale" />
 			<state id="umido" />
 			<parents>Meteo_2</parents>
-			<probabilities>0.6666666666666666 0.3333333333333334 0.3333333333333334 0.6666666666666666</probabilities>
+			<probabilities>0.3 0.7 0.65 0.35</probabilities>
 		</cpt>
 		<cpt id="Terreno_3">
 			<state id="normale" />
@@ -187,9 +187,9 @@
 			<probabilities>0.95 0.05 0 0.9 0.05 0.05 0 0.05 0.95 0.95 0.05 0 0.05 0.9 0.05 0.95 0.05 0 0.05 0.95 0 0.05 0.05 0.9 0.95 0.05 0</probabilities>
 		</cpt>
 		<cpt id="Sensore_Posizione_3">
-			<state id="left" />
-			<state id="midle" />
-			<state id="right" />
+			<state id="sinistra" />
+			<state id="centro" />
+			<state id="destra" />
 			<parents>Accuratezza_Sensore_3 Posizione_3</parents>
 			<probabilities>0.35 0.325 0.325 0.325 0.35 0.325 0.325 0.3250000000000001 0.35 0.9 0.05 0.04999999999999997 0.05 0.9 0.04999999999999993 0.04999999999999993 0.05 0.9 0.99 0.005 0.005000000000000009 0.005000000000000009 0.99 0.005 0.005 0.005000000000000004 0.99</probabilities>
 		</cpt>
@@ -207,7 +207,7 @@
 			<state id="normale" />
 			<state id="umido" />
 			<parents>Meteo_3</parents>
-			<probabilities>0.6666666666666666 0.3333333333333334 0.3333333333333334 0.6666666666666666</probabilities>
+			<probabilities>0.3 0.7 0.65 0.35</probabilities>
 		</cpt>
 		<cpt id="Terreno_4">
 			<state id="normale" />
@@ -238,9 +238,9 @@
 			<probabilities>0.95 0.05 0 0.9 0.05 0.05 0 0.05 0.95 0.95 0.05 0 0.05 0.9 0.05 0.95 0.05 0 0.05 0.95 0 0.05 0.05 0.9 0.95 0.05 0</probabilities>
 		</cpt>
 		<cpt id="Sensore_Posizione_4">
-			<state id="left" />
-			<state id="midle" />
-			<state id="right" />
+			<state id="sinistra" />
+			<state id="centro" />
+			<state id="destra" />
 			<parents>Accuratezza_Sensore_4 Posizione_4</parents>
 			<probabilities>0.35 0.325 0.325 0.325 0.35 0.325 0.325 0.3250000000000001 0.35 0.9 0.05 0.04999999999999997 0.05 0.9 0.04999999999999993 0.04999999999999993 0.05 0.9 0.99 0.005 0.005000000000000009 0.005000000000000009 0.99 0.005 0.005 0.005000000000000004 0.99</probabilities>
 		</cpt>
