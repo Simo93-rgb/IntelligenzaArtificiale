@@ -1,3 +1,7 @@
+import sys
+
+import pysmile
+
 from classi import Outcome, Nodo
 import random
 
@@ -26,18 +30,16 @@ RESET_COLOUR = "\033[0m"
 
 def change_evidence_and_update(net, node_id: str, outcome: Outcome = None) -> Outcome:
     """
-        Modifica l'evidenza di un nodo nella rete e aggiorna le credenze della rete.
+    Modifica l'evidenza di un nodo nella rete e aggiorna le credenze della rete.
 
-        Parametri:
-            net (Network): L'oggetto della rete bayesiana.
+    Args:
+        net (Network): L'oggetto della rete bayesiana.
+        node_id (str): Il nodo su cui modificare l'evidenza.
+        outcome (Outcome, optional): Il risultato da impostare come evidenza. Se None, l'evidenza viene rimossa.
 
-            node_id (Nodo): Il nodo su cui modificare l'evidenza.
-
-            outcome (Outcome, opzionale): Il risultato da impostare come evidenza. Se None, l'evidenza viene rimossa.
-
-        Restituisce:
-            None
-        """
+    Returns:
+        Outcome: Il risultato passato per argomento, utilizzato per ulteriori logiche.
+    """
     if outcome:
         net.set_evidence(node_id, outcome.value)
     else:
@@ -47,6 +49,16 @@ def change_evidence_and_update(net, node_id: str, outcome: Outcome = None) -> Ou
 
 
 def get_condition(net, temporal: int):
+    """
+    Recupera e modifica le condizioni della rete basate sul tempo specificato.
+
+    Args:
+        net (BayesianNetwork): L'oggetto della rete bayesiana.
+        temporal (int): Il tempo specificato per il quale ottenere le condizioni.
+
+    Returns:
+        None
+    """
     t_str = f"_{str(temporal)}"
     pt_str = f"_{str(temporal - 1)}"
     if temporal == 0:
@@ -83,14 +95,38 @@ def get_condition(net, temporal: int):
 
 
 def get_position(net, nodo: str, options: dict):
+    """
+        Rileva e modifica l'evidenza di posizione del nodo specificato in base all'input dell'utente.
+
+        Args:
+            net (BayesianNetwork): L'oggetto della rete bayesiana.
+            nodo (str): Il nodo per cui la posizione deve essere determinata.
+            options (dict): Un dizionario delle possibili posizioni che l'utente può scegliere.
+
+        Returns:
+            None
+        """
     print("Posizione rilevata?\n")
     for key, value in options.items():
         print(f"{key}. {value.value}")
-    choice = input().strip()
-    change_evidence_and_update(net, nodo, options.get(choice))
+    try:
+        choice = input().strip()
+        change_evidence_and_update(net, nodo, options.get(choice))
+    except KeyError:
+        print("Opzione non valida.")
 
 
 def set_action(net, nodo: str):
+    """
+        Determina e stampa l'azione ottimale per il nodo specificato basata sul valore più alto di probabilità del nodo.
+
+        Args:
+            net (BayesianNetwork): L'oggetto della rete bayesiana.
+            nodo (str): Il nodo per cui l'azione deve essere determinata.
+
+        Returns:
+            None
+        """
     valore_nodo = net.get_node_value(nodo)
     azione: Outcome = change_evidence_and_update(
         net,
@@ -102,9 +138,23 @@ def set_action(net, nodo: str):
 
 
 def set_fault(net, weather: Outcome, terrain: Outcome, temporal: str, fault: Outcome = Outcome.NO):
+    """
+    Determina e imposta una condizione di guasto basata sul meteo e sul terreno.
+
+    Args:
+        net (BayesianNetwork): La rete bayesiana in uso.
+        weather (Outcome): L'ultima evidenza meteo impostata.
+        terrain (Outcome): L'ultima evidenza terreno impostata.
+        temporal (str): Stringa temporale per identificare il tempo corrente.
+        fault (Outcome, optional): L'ultima condizione di guasto, di default a 'NO'.
+
+    Returns:
+        None
+    """
     if (weather == Outcome.UMIDO.value and random.random() <= 0.1
             or terrain == Outcome.SCONNESSO.value and random.random() <= 0.5
             or random.random() <= 0.1):
-        fault = Outcome.YES.value
+        print("Si è verificato un guasto")
+        sys.exit("Terminazione del programma a causa del sensore rotto")
     print(f"Tempo {temporal[1:]}:\nMeteo -> {weather}\nTerreno -> {terrain}\nFault -> {fault}\n")
     change_evidence_and_update(net, GUASTO + temporal, fault)
