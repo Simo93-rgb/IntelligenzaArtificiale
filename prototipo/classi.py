@@ -10,7 +10,6 @@ class Outcome(Enum):
     STANDARD = "standard"
 
 
-
 class Nodo(Enum):
     PROFITTO = "profitto"
     RICERCA = "ricerca_di_mercato"

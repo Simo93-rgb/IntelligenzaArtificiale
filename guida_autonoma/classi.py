@@ -16,7 +16,7 @@ class Outcome(Enum):
     NO = "no"
 
 
-class Nodo(Enum):
+class Nodo():
     METEO = "Meteo"
     TERRENO = "Terreno"
     GUASTO = "Guasto"
@@ -24,6 +24,7 @@ class Nodo(Enum):
     SENSORE_POSIZIONE = "Sensore_Posizione"
     POSIZIONE = "Posizione"
     COMANDO = "Comando"
+
 
 
 class TipoNodo(Enum):
