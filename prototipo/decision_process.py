@@ -5,12 +5,12 @@ def print_node_utility(net, node_id: Nodo):
     """
         Stampa l'utilità attesa per un dato nodo nella rete bayesiana.
 
-        Parametri:
+        Args:
             net (Network): L'oggetto della rete bayesiana.
 
             node_id (Nodo): L'identificativo del nodo di cui si vogliono visualizzare le utilità.
 
-        Restituisce:
+        Returns:
             None
         """
     colours = ["\033[92m", "\033[93m", "\033[94m", "\033[95m"]
@@ -34,14 +34,14 @@ def change_evidence_and_update(net, node_id: Nodo, outcome: Outcome = None) -> O
     """
         Modifica l'evidenza di un nodo nella rete e aggiorna le credenze della rete.
 
-        Parametri:
+        Args:
             net (Network): L'oggetto della rete bayesiana.
 
             node_id (Nodo): Il nodo su cui modificare l'evidenza.
 
             outcome (Outcome, opzionale): Il risultato da impostare come evidenza. Se None, l'evidenza viene rimossa.
 
-        Restituisce:
+        Returns:
             None
         """
     if outcome:
@@ -56,7 +56,7 @@ def user_choice(prompt: str, options: dict, net, node_id: Nodo) -> str:
     """
         Visualizza una domanda all'utente, stampa l'utilità del nodo specificato, e cattura la scelta dell'utente.
 
-        Parametri:
+        Args:
             prompt (str): Il messaggio da visualizzare all'utente.
 
             options (dict): Un dizionario delle opzioni disponibili per l'utente.
@@ -65,7 +65,7 @@ def user_choice(prompt: str, options: dict, net, node_id: Nodo) -> str:
 
             node_id (Nodo): Il nodo di cui visualizzare l'utilità.
 
-        Restituisce:
+        Returns:
             str: La scelta dell'utente o "Invalid choice" se la scelta non è valida.
         """
     print_node_utility(net, node_id)
@@ -80,7 +80,7 @@ def set_user_defined_evidence(net, node_id: Nodo, outcome_dict: dict, prompt: st
     """
         Chiede all'utente di definire l'evidenza per un nodo specifico e la imposta nella rete.
 
-        Parametri:
+        Args:
             net (Network): L'oggetto della rete bayesiana.
 
             node_id (Nodo): Il nodo per il quale impostare l'evidenza.
@@ -89,7 +89,7 @@ def set_user_defined_evidence(net, node_id: Nodo, outcome_dict: dict, prompt: st
 
             prompt (str): Il messaggio da visualizzare per chiedere all'utente di scegliere.
 
-        Restituisce:
+        Returns:
             None
         """
     choice = user_choice(prompt, outcome_dict, net, node_id)
@@ -99,14 +99,14 @@ def set_user_defined_evidence(net, node_id: Nodo, outcome_dict: dict, prompt: st
         print("Invalid input. No changes made.")
 
 
-def decision_process(net):
+def decision_process(net) -> None:
     """
         Gestisce il processo decisionale dell'utente per modificare le evidenze nella rete e visualizzare le utilità.
 
-        Parametri:
+        Args:
             net (Network): L'oggetto della rete bayesiana.
 
-        Restituisce:
+        Returns:
             None
         """
     options = {"1": "YES", "2": "NO"}

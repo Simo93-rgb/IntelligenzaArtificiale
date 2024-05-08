@@ -54,7 +54,7 @@
 	<dynamic numslices="5">
 		<cpt id="Meteo" order="1">
 			<parents>Meteo</parents>
-			<probabilities>0.3 0.7 0.65 0.35</probabilities>
+			<probabilities>0.6666666666666666 0.3333333333333334 0.2857142857142857 0.7142857142857143</probabilities>
 		</cpt>
 		<cpt id="Terreno" order="1">
 			<parents>Terreno</parents>

@@ -1,8 +1,7 @@
 import pysmile
 from licenze import pysmile_license
-from classi import Nodo, Outcome
-from prototipo import decision_process
-from navigation import get_condition, get_position, set_fault, set_action, COMANDO, POSIZIONE, SENSORE_POSIZIONE
+from classi import Outcome
+from navigation import get_condition, get_position, set_action, COMANDO, SENSORE_POSIZIONE
 
 TEMPORAL_PLATE = 5
 
@@ -23,4 +22,4 @@ if __name__ == '__main__':
         options = {"1": Outcome.SINISTRA, "2": Outcome.CENTRO, "3": Outcome.DESTRA}
         get_position(network, posizione, options)
         set_action(network, comando)
-        print(10 * "_")
+        print(30 * "*")

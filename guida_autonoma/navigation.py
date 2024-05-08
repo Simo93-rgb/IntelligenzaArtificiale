@@ -1,8 +1,6 @@
 import sys
-
 import pysmile
-
-from classi import Outcome, Nodo
+from classi import Outcome
 import random
 
 METEO = "Meteo"
@@ -12,7 +10,7 @@ ACCURATEZZA_SENSORE = "Accuratezza_Sensore"
 SENSORE_POSIZIONE = "Sensore_Posizione"
 POSIZIONE = "Posizione"
 COMANDO = "Comando"
-COLOURS = ["\033[92m", "\033[93m", "\033[94m", "\033[95m", "\033[96m" ]
+COLOURS = ["\033[92m", "\033[93m", "\033[94m", "\033[95m", "\033[96m"]
 RESET_COLOUR = "\033[0m"
 PROB_TERRENO = (5 / 7)
 PROB_METEO = (2 / 3)
@@ -124,10 +122,13 @@ def get_position(net, nodo: str, options: dict) -> None:
     for key, value in options.items():
         print(f"{key}. {value.value}")
     try:
-        choice = input().strip()
+        choice = input("Inserisci il numero: ").strip()
+        if options.get(choice) is None:
+            raise KeyError("Opzione non valida")
         change_evidence_and_update(net, nodo, options.get(choice))
-    except KeyError:
-        print("Opzione non valida.")
+    except KeyError as e:
+        print(e)
+        sys.exit("Terminazione a causa di KeyError")
 
 
 def set_action(net, nodo: str) -> None:
