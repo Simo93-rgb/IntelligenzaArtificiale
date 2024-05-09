@@ -8,7 +8,7 @@ RESET_COLOUR = "\033[0m"
 
 if __name__ == "__main__":
     net = pysmile.Network()
-    net.read_file("../Reti/problema_1.xdsl")
+    net.read_file("../reti/problema_1.xdsl")
     net.update_beliefs()
 
     print(f"{COLOUR}Inizio Processo Decisione Prototipo{RESET_COLOUR}")

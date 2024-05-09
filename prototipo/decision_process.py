@@ -1,3 +1,5 @@
+import sys
+
 from classi import Outcome, Nodo, TipoNodo
 
 
@@ -72,8 +74,15 @@ def user_choice(prompt: str, options: dict, net, node_id: Nodo) -> str:
     print(prompt)
     for key, value in options.items():
         print(f"{key}. {value}")
-    choice = input().strip()
-    return options.get(choice, "Invalid choice")
+
+    try:
+        choice = input("Inserisci il numero: ").strip()
+        if options.get(choice) is None:
+            raise KeyError("Opzione non valida")
+        return options.get(choice, "Invalid choice")
+    except KeyError as e:
+        print(e)
+        sys.exit("Terminazione a causa di KeyError")
 
 
 def set_user_defined_evidence(net, node_id: Nodo, outcome_dict: dict, prompt: str):

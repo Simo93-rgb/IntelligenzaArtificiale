@@ -6,7 +6,7 @@ from navigation import get_condition, get_position, set_action, COMANDO, SENSORE
 TEMPORAL_PLATE = 5
 
 network = pysmile.Network()
-network.read_file("../Reti/problema_2 unrolled.xdsl")
+network.read_file("../reti/problema_2 unrolled.xdsl")
 
 if __name__ == '__main__':
     for i in range(TEMPORAL_PLATE):
