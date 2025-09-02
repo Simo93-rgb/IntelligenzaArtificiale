@@ -1,6 +1,6 @@
 # IntelligenzaArtificiale
 
-Realizzazione di due reti bayesiane e codice sorgente in python per interfacciarsi con esse tramite pysmile, libreria di bayes fuzion.
+Realizzazione di due reti bayesiane e codice sorgente in python per interfacciarsi con esse tramite pysmile, libreria di BayesFusion.
 
 ## Prototipo
 Un industria manifatturiera deve decidere se andare avanti con la produzione di un nuovo prodotto o fermarla. I profitti futuri dipendono dalla qualita’ del prodotto (standard o alta) e dalla domanda di mercato (bassa o alta). L’industria puo’, prima di decidere sulla produzione, effettuare due altre azioni: migliorare la qualita’ del prodotto sviluppando un prototipo, oppure effettuare ricerche di marketing approfondite per capire la domanda di mercato. Puo’ effettuare anche entrambe le cose (nel qual caso prima effettua la ricerca di marketing). Entrambe queste azioni costano, in particolare le ricerche di mercato $1000 e lo sviluppo del prototipo di qualita’ $5000. Le ricerche di mercato sono affidabili al 90%, mentre lo sviluppo del prototipo ha una probabilita’ di aumentare la qualita’ dell’85%.
